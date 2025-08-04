@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday Harshil! 🎉</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet" />
+  <style>
+    * {margin: 0; padding: 0; box-sizing: border-box;}
+    body {
+      font-family: 'Orbitron', sans-serif;
+      background: #0d0d0d;
+      color: #00ffe5;
+      overflow-x: hidden;
+    }
+    .particles {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background: url('https://i.imgur.com/hWqJ1L4.png') repeat;
+      opacity: 0.05;
+      z-index: -1;
+      animation: moveBg 60s linear infinite;
+    }
+    @keyframes moveBg {
+      0% { background-position: 0 0; }
+      100% { background-position: 1000px 1000px; }
+    }
+    header {text-align: center; padding: 60px 20px;}
+    header h1 {
+      font-size: 3.5em;
+      color: #00f0ff;
+      text-shadow: 0 0 20px #00f0ff, 0 0 40px #00f0ff;
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+    @keyframes glow {
+      from { text-shadow: 0 0 10px #00f0ff; }
+      to { text-shadow: 0 0 30px #00f0ff, 0 0 50px #00f0ff; }
+    }
+    .message-box {
+      max-width: 800px;
+      margin: 30px auto;
+      padding: 25px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(0, 255, 255, 0.2);
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+    }
+    .message-box p {
+      font-size: 1.4em;
+      line-height: 1.8;
+      color: #e0f7fa;
+    }
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      margin: 40px 20px;
+    }
+    .gallery img {
+      width: 240px;
+      height: 280px;
+      object-fit: cover;
+      border-radius: 20px;
+      border: 1px solid #00ffff50;
+      box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .gallery img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 30px rgba(0, 255, 255, 0.5);
+    }
+    .countdown {
+      text-align: center;
+      margin-top: 30px;
+      font-size: 2em;
+      color: #00e0ff;
+    }
+    .carousel {
+      margin: 40px auto;
+      max-width: 600px;
+      background: rgba(255,255,255,0.05);
+      padding: 20px;
+      border-radius: 15px;
+      border: 1px solid rgba(0,255,255,0.2);
+      color: #fff;
+      animation: glow 4s infinite alternate;
+    }
+    .carousel p {
+      font-size: 1.2em;
+    }
+    footer {
+      text-align: center;
+      color: #888;
+      font-size: 0.9em;
+      margin: 30px 0 60px;
+    }
+    .mute-btn {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: #00f0ff;
+      color: #000;
+      border: none;
+      padding: 10px;
+      border-radius: 10px;
+      cursor: pointer;
+      z-index: 99;
+    }
+    @media screen and (max-width: 600px) {
+      .gallery img { width: 90%; height: auto; }
+    }
+    @keyframes fall {
+  0% {
+    transform: translateY(-50px) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+  </style>
+</head>
+<body>
+  <div class="particles"></div>
+
+  <button class="mute-btn" onclick="toggleAudio(event)">🔊 Mute</button>
+  <audio id="bgMusic" loop>
+    <source src="audio/Royals.mp3" type="audio/mpeg">
+  </audio>
+
+  <header>
+    <h1>🔥 Happy Birthday, Harshil! 🔥</h1>
+  </header>
+
+  <div class="countdown" id="countdown"></div>
+
+  <div class="message-box">
+    <p>
+      Yo! Today's not just any day — it's the day an absolute legend was born. 🥂<br>
+      You're more than just a friend, you're the brother I got to choose. 💪<br>
+      Here's to wild memories, epic vibes, and a future full of greatness. 🚀<br>
+      Stay bold, stay real — and let's celebrate you like never before! 🎂
+    </p>
+  </div>
+
+  <div class="carousel">
+    <p id="quote">"Real friends don't let you do stupid things alone."</p>
+  </div>
+
+  <div class="gallery">
+    <img src="images/1.jpg" alt="bro 1">
+    <img src="images/2.jpg" alt="bro 2">
+    <img src="images/3.jpg" alt="bro 3">
+    <img src="images/4.jpg" alt="bro 4">
+  </div>
+
+  <div style="text-align: center; margin: 40px;">
+    <a href="https://wa.me/?text=Hey!%20Check%20out%20this%20awesome%20birthday%20surprise!%20[LINK]" target="_blank" style="color:#00ffff; text-decoration:underline;">🎁 Share on WhatsApp</a>
+  </div>
+
+  <footer>
+    &copy; 2025 | Designed by Friend 😎
+  </footer>
+
+  <script>
+    // Music toggle
+    const music = document.getElementById('bgMusic');
+    function toggleAudio(event) {
+      if (music.paused) {
+        music.play();
+        event.target.innerText = '🔊 Mute';
+      } else {
+        music.pause();
+        event.target.innerText = '🔈 Unmute';
+      }
+    }
+
+    // Countdown
+    // NOTE: Update the birthday date below each year to match the next birthday.
+    const birthday = new Date('August 6, 2025 00:00:00').getTime();
+    const countdownEl = document.getElementById('countdown');
+    setInterval(() => {
+      const now = new Date().getTime();
+      const distance = birthday - now;
+      const d = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const h = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const s = Math.floor((distance % (1000 * 60)) / 1000);
+      countdownEl.innerHTML = `🎯 Countdown: ${d}d ${h}h ${m}m ${s}s`;
+    }, 1000);
+
+    // Quotes carousel
+    const quotes = [
+      '"Brothers aren’t just family — they’re forever teammates."',
+      '"No bond like a brother from another mother."',
+      '"Legends are born in August, facts only."',
+      '"Real friends hype each other like rappers at a concert."'
+    ];
+    let quoteIndex = 0;
+    setInterval(() => {
+      quoteIndex = (quoteIndex + 1) % quotes.length;
+      document.getElementById('quote').innerText = quotes[quoteIndex];
+    }, 5000);
+
+    // Confetti on load (fireworks substitute)
+    window.onload = () => {
+      for (let i = 0; i < 30; i++) {
+        const confetti = document.createElement('div');
+        confetti.style.width = '10px';
+        confetti.style.height = '10px';
+        confetti.style.background = `hsl(${Math.random() * 360}, 100%, 50%)`;
+        confetti.style.position = 'fixed';
+        confetti.style.top = Math.random() * window.innerHeight + 'px';
+        confetti.style.left = Math.random() * window.innerWidth + 'px';
+        confetti.style.opacity = '0.7';
+        confetti.style.borderRadius = '50%';
+        confetti.style.animation = `fall ${3 + Math.random() * 5}s linear infinite`;
+        document.body.appendChild(confetti);
+      }
+    }
+  </script>
+</body>
+</html>
